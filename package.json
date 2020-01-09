@@ -1,0 +1,14 @@
+{
+  "name": "datamaker",
+  "version": "1.0.0",
+  "description": "Generate fake data ",
+  "main": "Make.js",
+  "dependencies": {
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Aviad Ariel",
+  "license": "ISC"
+}
