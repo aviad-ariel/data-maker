@@ -1,8 +1,9 @@
 var fs = require("fs");
 var config = require("./config");
+var path = require('path');
 
 const generateName = type => {
-  var contents = fs.readFileSync(`./data/${type}.txt`, "utf8").split("\n");
+  var contents = fs.readFileSync(path.join(__dirname, 'data', `${type}.txt`), "utf8").split("\n");
   var target = Math.floor(Math.random() * contents.length);
   return contents[target].replace("\r", "");
 };
