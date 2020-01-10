@@ -1,9 +1,12 @@
 var fs = require("fs");
 var config = require("./config");
-var path = require('path');
+var path = require("path");
+const Types = require('./Types');
 
 const generateName = type => {
-  var contents = fs.readFileSync(path.join(__dirname, 'data', `${type}.txt`), "utf8").split("\n");
+  var contents = fs
+    .readFileSync(path.join(__dirname, "data", `${type}.txt`), "utf8")
+    .split("\n");
   var target = Math.floor(Math.random() * contents.length);
   return contents[target].replace("\r", "");
 };
@@ -14,10 +17,10 @@ const generatePrice = () => {
   ).toFixed(config.NUMBER_OF_DIGITS);
 };
 
-const generateEmail = options => {
-  return options.name
-    ? `${options.name}${config.EMAIL_PROVIDER}`
-    : `${generateName("firstName")}${config.EMAIL_PROVIDER}`;
+const generateEmail = name => {
+  return name
+    ? `${name}${config.EMAIL_PROVIDER}`
+    : `${generateName(Types.FirstName)}${config.EMAIL_PROVIDER}`;
 };
 
 const generateRandomPassword = () => {
@@ -29,10 +32,8 @@ const generateRandomPassword = () => {
   return password;
 };
 
-const generatePassword = options => {
-  return options.defaultPassword
-    ? options.defaultPassword
-    : generateRandomPassword();
+const generatePassword = defaultPassword => {
+  return defaultPassword ? defaultPassword : generateRandomPassword();
 };
 
 module.exports = {

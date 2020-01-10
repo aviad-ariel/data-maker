@@ -1,36 +1,38 @@
 const generators = require("./generators");
-
-class Make {
-  constructor(dataTypes, options) {
+const Types = require("./Types");
+class Schema {
+  constructor(dataTypes) {
+    this.name = "";
     this.dataTypes = dataTypes;
-    this.options = options;
   }
 
-  generateOne() {
+  makeOne() {
     var fakeModel = {};
     Object.keys(this.dataTypes).forEach(element => {
-      fakeModel[element] = this.handleTypes(this.dataTypes[element]);
+      fakeModel[element] = this.handleTypes(this.dataTypes[element].type);
     });
     return fakeModel;
   }
 
   handleTypes(type) {
     switch (type) {
-      case "firstName":
-        this.options.name = generators.generateName("firstName");
-        return this.options.name;
+      case Types.FirstName:
+        this.name = generators.generateName(type);
+        return this.name;
 
-      case "lastName":
-        return generators.generateName("lastName");
+      case Types.LastName:
+        return generators.generateName(type);
 
-      case "price":
+      case Types.Price:
         return generators.generatePrice();
 
-      case "email":
-        return generators.generateEmail(this.options);
+      case Types.Email:
+        return generators.generateEmail(this.name);
 
-      case "password":
-        return generators.generatePassword(this.options);
+      case Types.Password:
+        return generators.generatePassword(
+          this.dataTypes.Password.defaultPassword
+        );
 
       default:
         throw new Error(`"${type}" type is not supported`);
@@ -38,4 +40,4 @@ class Make {
   }
 }
 
-module.exports = Make;
+module.exports = { Schema, Types };
