@@ -9,19 +9,19 @@ class Schema {
   makeOne() {
     var fakeModel = {};
     Object.keys(this.dataTypes).forEach(element => {
-      fakeModel[element] = this.handleTypes(this.dataTypes[element].type);
+      fakeModel[element] = this.handleTypes(this.dataTypes[element]);
     });
     return fakeModel;
   }
 
-  handleTypes(type) {
-    switch (type) {
+  handleTypes(object) {
+    switch (object.type) {
       case Types.FirstName:
-        this.name = generators.generateName(type);
+        this.name = generators.generateName(object.type);
         return this.name;
 
       case Types.LastName:
-        return generators.generateName(type);
+        return generators.generateName(object.type);
 
       case Types.Price:
         return generators.generatePrice();
@@ -30,9 +30,7 @@ class Schema {
         return generators.generateEmail(this.name);
 
       case Types.Password:
-        return generators.generatePassword(
-          this.dataTypes.Password.defaultPassword
-        );
+        return generators.generatePassword(object.defaultPassword);
 
       default:
         throw new Error(`"${type}" type is not supported`);
