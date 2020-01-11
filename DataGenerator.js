@@ -1,5 +1,6 @@
 const generators = require("./generators");
 const Types = require("./Types");
+
 class Schema {
   constructor(dataTypes) {
     this.name = "";
