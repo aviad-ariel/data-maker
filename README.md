@@ -1,4 +1,4 @@
-# data-maker
+# data-maker-json
 Genarte fake data.
 
 #### Inatall via NPM:
@@ -19,7 +19,7 @@ Genarte fake data.
     make.makeOne();
 #### Example:
 <p align="center">
-  <img src="example.gif" width="70%">
+  <img src="https://s5.gifyu.com/images/examplea9918ab50434344a.gif" width="70%">
 </p>
 
 
