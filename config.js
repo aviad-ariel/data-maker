@@ -3,7 +3,7 @@ const PRICE_UPPER_LIMIT = 100;
 const CHARACTERS =
   "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 const PASSWORD_LENGTH = 10;
-const EMAIL_PROVIDER = "@gmail.com";
+const EMAIL_PROVIDER = "gmail.com";
 
 module.exports = {
   NUMBER_OF_DIGITS,

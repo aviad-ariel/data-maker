@@ -1,7 +1,8 @@
 var fs = require("fs");
 var config = require("./config");
 var path = require("path");
-const Types = require('./Types');
+const Types = require("./Types");
+const bcrypt = require("bcryptjs");
 
 const generateName = type => {
   var contents = fs
@@ -11,16 +12,18 @@ const generateName = type => {
   return contents[target].replace("\r", "");
 };
 
-const generatePrice = () => {
+const generatePrice = upperLimit => {
+  const limit = upperLimit ? upperLimit : config.PRICE_UPPER_LIMIT
   return Math.abs(
-    Math.floor(Math.random() * config.PRICE_UPPER_LIMIT) - Math.random()
+    Math.floor(Math.random() * limit) - Math.random()
   ).toFixed(config.NUMBER_OF_DIGITS);
 };
 
-const generateEmail = name => {
+const generateEmail = (name, provider) => {
+  const emailProvider = provider ? provider : config.EMAIL_PROVIDER;
   return name
-    ? `${name}${config.EMAIL_PROVIDER}`
-    : `${generateName(Types.FirstName)}${config.EMAIL_PROVIDER}`;
+    ? `${name}@${emailProvider}`
+    : `${generateName(Types.FirstName)}@${emailProvider}`;
 };
 
 const generateRandomPassword = () => {
@@ -32,10 +35,15 @@ const generateRandomPassword = () => {
   return password;
 };
 
-const generatePassword = defaultPassword => {
-  return defaultPassword ? defaultPassword : generateRandomPassword();
+const generatePassword = async (defaultPassword, toHash) => {
+  const password = defaultPassword ? defaultPassword : generateRandomPassword();
+  return toHash ? await hashPassword(password) : password;
 };
 
+const hashPassword = async password => {
+  const salt = await bcrypt.genSalt(12);
+  return await bcrypt.hash(password, salt);
+};
 module.exports = {
   generateName,
   generatePrice,
