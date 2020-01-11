@@ -1,4 +1,4 @@
-# data-maker
+# data-maker-json
 Genarte fake data.
 
 #### Inatall via NPM:
