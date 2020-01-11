@@ -35,14 +35,14 @@ const generateRandomPassword = () => {
   return password;
 };
 
-const generatePassword = async (defaultPassword, toHash) => {
+const generatePassword = (defaultPassword, toHash) => {
   const password = defaultPassword ? defaultPassword : generateRandomPassword();
-  return toHash ? await hashPassword(password) : password;
+  return toHash ? hashPassword(password) : password;
 };
 
-const hashPassword = async password => {
-  const salt = await bcrypt.genSalt(12);
-  return await bcrypt.hash(password, salt);
+const hashPassword = password => {
+  const salt = bcrypt.genSaltSync(12);
+  return bcrypt.hashSync(password, salt);
 };
 module.exports = {
   generateName,

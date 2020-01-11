@@ -6,16 +6,16 @@ class Schema {
     this.dataTypes = dataTypes;
   }
 
-  async makeOne() {
+  makeOne() {
     var fakeModel = {};
     const keys = Object.keys(this.dataTypes);
     for (let i = 0; i < keys.length; i++) {
-      fakeModel[keys[i]] = await this.handleTypes(this.dataTypes[keys[i]]);
+      fakeModel[keys[i]] = this.handleTypes(this.dataTypes[keys[i]]);
     }
     return fakeModel;
   }
 
-  async handleTypes(object) {
+  handleTypes(object) {
     switch (object.type) {
       case Types.FirstName:
         return (this.name = generators.generateName(object.type));
@@ -30,7 +30,7 @@ class Schema {
         return generators.generateEmail(this.name, object.provider);
 
       case Types.Password:
-        return await generators.generatePassword(object.default, object.toHash);
+        return generators.generatePassword(object.default, object.toHash);
 
       default:
         throw new Error(`"${object.type}" type is not supported`);
