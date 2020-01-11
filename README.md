@@ -19,7 +19,7 @@ Genarte fake data.
     make.makeOne();
 #### Example:
 <p align="center">
-  <img src="example.gif" width="70%">
+  <img src="https://gfycat.com/warmheartedrewardingbabirusa" width="70%">
 </p>
 
 
