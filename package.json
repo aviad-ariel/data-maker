@@ -2,7 +2,7 @@
   "name": "data-maker-json",
   "version": "1.0.7",
   "description": "Generate fake data ",
-  "main": "Make.js",
+  "main": "DataGenerator.js",
   "dependencies": {
     "bcryptjs": "^2.4.3"
   },
