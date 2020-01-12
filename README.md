@@ -28,5 +28,5 @@ Genarte fake data.
 | dataMakerJson.Types.FirstName  | None  |
 | dataMakerJson.Types.LastName  | None  |
 | dataMakerJson.Types.Email  | String: provider(Email provider default is gmail)  |
-| dataMakerJson.Types.Password  | String: default(Default password, if not given a random 10 digit password will generated)  Boolean: toHash(If set to true uses bcrypt to hash the password)  |
+| dataMakerJson.Types.Password  | String: default(Default password, if not given a random 10 digit password will generated) <br> Boolean: toHash(If set to true uses bcrypt to hash the password)  |
 | dataMakerJson.Types.Price  | Int: upperLimit(The random price upper limit, 100 is the default)  |
