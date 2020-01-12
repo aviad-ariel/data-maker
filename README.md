@@ -5,21 +5,21 @@ Genarte fake data.
     npm i data-maker-json
     
 #### Usage:
-###### Require Make:  
-    var Make = require("./Make");
+###### Require dataMakerJson:  
+    var dataMakerJson = require("data-maker-json");
 
 ###### Constract schema:
-    const make = new Make.Schema({
+    const schema = new dataMakerJson.Schema({
         your-field-name: {
           type: Make.Types.some-type,
           optional-setting: value,
         }
       });
 ###### Generate json object according to "make" schema:
-    make.makeOne();
+    schema.makeOne();
 #### Example:
 <p align="center">
-  <img src="https://s5.gifyu.com/images/examplea9918ab50434344a.gif" width="70%">
+  <img src="example.gif" width="70%">
 </p>
 
 
